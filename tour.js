@@ -266,7 +266,7 @@ exports.tour = function(t) {
 		},
 		startRaw: function(i) {
 			var room = Rooms.rooms[i];
-			var html = '<hr /><img src="http://s8.postimg.org/h46j3hahh/logohispano.png" width="160" height="120"><h3><font color="SteelBlue">Ronda '+ tour[room.id].roundNum +'!</font></h3><font color="RoyalBlue"><b>FORMATO:</b></font> ' + Tools.data.Formats[tour[room.id].tier].name + "<hr /><center>";
+			var html = '<hr /><img src="http://s8.postimg.org/h46j3hahh/logohispano.png" width="399" height="200"><h3><font color="SteelBlue">Ronda '+ tour[room.id].roundNum +'!</font></h3><font color="RoyalBlue"><b>FORMATO:</b></font> ' + Tools.data.Formats[tour[room.id].tier].name + "<hr /><center>";
 			var round = tour[room.id].round;
 			var firstMatch = false;
 			for (var i in round) {
