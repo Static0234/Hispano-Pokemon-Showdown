@@ -988,12 +988,12 @@ var BattleRoom = (function () {
 		if (inactiveSide !== 1) {
 			// side 0 is inactive
 			var ticksLeft0 = Math.min(this.sideTicksLeft[0] + 1, maxTicksLeft);
-			this.sendPlayer(0, '|inactive|Tiens ' + (ticksLeft0 * 10) + ' segundos para hacer tú decisión.');
+			this.sendPlayer(0, '|inactive|Tienes ' + (ticksLeft0 * 10) + ' segundos para hacer tú decisión.');
 		}
 		if (inactiveSide !== 0) {
 			// side 1 is inactive
 			var ticksLeft1 = Math.min(this.sideTicksLeft[1] + 1, maxTicksLeft);
-			this.sendPlayer(1, '|inactive|Tiens ' + (ticksLeft1 * 10) + ' segundos para hacer tú decisión.');
+			this.sendPlayer(1, '|inactive|Tienes ' + (ticksLeft1 * 10) + ' segundos para hacer tú decisión.');
 		}
 
 		this.resetTimer = setTimeout(this.kickInactive.bind(this), 10 * 1000);
@@ -1108,7 +1108,7 @@ var BattleRoom = (function () {
 		var resend = joining || !this.battle.playerTable[oldid];
 		if (this.battle.playerTable[oldid]) {
 			if (this.rated) {
-				this.add('|message|' + user.name + ' descalificado por cambiar su nombre.');
+				this.add('|message|' + user.name + ' fue descalificado por cambiar su nombre.');
 				this.battle.lose(oldid);
 				this.battle.leave(oldid);
 				resend = false;
@@ -1159,7 +1159,7 @@ var BattleRoom = (function () {
 			} else if (this.rated.p2 === user.userid) {
 				slot = 1;
 			} else {
-				user.popup("Esta es una batalla calificada; tu nombre de usuario debe ser " + this.rated.p1 + " o " + this.rated.p2 + " para unirte.");
+				user.popup("Esta no es válida; tu nombre de usuario debe ser " + this.rated.p1 + " o " + this.rated.p2 + " para unirte.");
 				return false;
 			}
 		}
