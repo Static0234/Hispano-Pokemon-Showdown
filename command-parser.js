@@ -368,7 +368,7 @@ var parse = exports.parse = function (message, room, user, connection, levelsDee
 
 		if (message.substr(0, 1) === '/' && cmd) {
 			// To guard against command typos, we now emit an error message
-			return connection.sendTo(room.id, "The command '/" + cmd + "' was unrecognized. To send a message starting with '/" + cmd + "', type '//" + cmd + "'.");
+			return connection.sendTo(room.id, "El comando '/" + cmd + "' no fue reconocido. Para enviar un mensaje empezando con '/" + cmd + "', escribe '//" + cmd + "'.");
 		}
 	}
 
