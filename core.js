@@ -109,4 +109,63 @@ var core = exports.core = {
         s += '</tbody></table><br /><center>Para comprar un producto de la tienda, usa el comando /buy [nombre].</center><br /></div><img src="http://i.imgur.com/fyLaZTn.png" /></center>';
         return s;
     },
+    
+    rank: function (user) {
+            var data = fs.readFileSync('config/tourWins.csv', 'utf-8');
+            var row = ('' + data).split("\n");
+
+            var list = [];
+
+            for (var i = row.length; i > -1; i--) {
+                if (!row[i]) continue;
+                var parts = row[i].split(",");
+                list.push([toId(parts[0]), Number(parts[1])]);
+            }
+
+            list.sort(function (a, b) {
+                return a[1] - b[1];
+            });
+            var arr = list.filter(function (el) {
+                return !!~el.indexOf(user);
+            });
+
+            if (list.indexOf(arr[0]) === -1) {
+			return '<b>Sem rank</b>';
+			} else {
+			return '<b>Rank ' + (list.length-list.indexOf(arr[0])) + ' de ' + list.length + '</b>';
+			}
+    },
+		
+    ladder: function (limit) {
+        var data = fs.readFileSync('config/tourWins.csv', 'utf-8');
+        var row = ('' + data).split("\n");
+
+        var list = [];
+
+        for (var i = row.length; i > -1; i--) {
+            if (!row[i]) continue;
+            var parts = row[i].split(",");
+            list.push([toId(parts[0]), Number(parts[1])]);
+        }
+
+        list.sort(function (a, b) {
+            return a[1] - b[1];
+        });
+
+        if (list.length > 1) {
+            var ladder = '<table border="0" cellspacing="0" cellpadding="3"><tbody><tr><td colspan=3><hr></td></tr><th>Rank |</th><th>Usuário</th><th>| Torneios Vencidos</th><tr><td colspan=3><hr></td></tr>';
+            var len = list.length;
+
+            limit = (len - limit) - 12;
+            if (limit > len) limit = len;
+
+            while (len--) {
+                if(len === limit) break;
+                ladder = ladder + '<tr id="tourladder"><td><b>' + (list.length - len) + '</td><td>' + list[len][0] + '</td><td><center>' + Math.floor(list[len][1]);
+            }
+            ladder += '</tbody></table>';
+            return ladder;
+        }
+        return 0;
+    },
 };
