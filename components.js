@@ -508,19 +508,19 @@ var components = exports.components = {
 		}
 	},
 	
-	rankingtorneo: 'rankingtorneos',
-    rankingtorneos: function (target, room, user) {
+    rankingtorneo: 'tournamentladder',
+    rankingtorneos: 'tournamentladder',
+    tourladder: 'tournamentladder',
+    tournamentladder: function (target, room, user) {
         if (!this.canBroadcast()) return;
 
-        if (!target) target = 10;
-        if (!/[0-9]/.test(target) && target.toLowerCase() !== 'all') target = -1;
-
+        if (!/[0-9]/.test(target) || !target) target = -1;
+        
         var ladder = Core.ladder(Number(target));
-        if (ladder === 0) return this.sendReply('Nadie está clasificado.');
-
-        return this.sendReply('|raw|<center>' + ladder + 'Para ver el ranking completo usa /rankingtorneos <em>Todos</em> o para ver una cierta cantidad de usuarios usa /rankingtorneos <em>Número</em></center>');
-
-},
+        if (ladder === 0) return this.sendReply('Ninguém está no rank ainda.');
+        return this.sendReply(ladder);
+       
+    },
 
     clearall: function (target, room, user) {
         if (!this.can('makeroom')) return this.sendReply('/clearall - Access denied.');
