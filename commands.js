@@ -495,6 +495,7 @@ var commands = exports.commands = {
 							"<a href=\"https://www.facebook.com/groups/PokemonHispanoShowdown/\"><button>Facebook</button></a>" +
 							"<a href=\"http://www.twitch.tv/pokemonhispano/\"><button>Livestream</button></a>" +
 						"</div>" +
+					"<a href=\"http://pokemon-hispano.comxa.com/showthread.php?tid=691\"><button>Torneo oficial Ou de Pokemon Hispano!</button></a>" +
 						"<p>Si tienes alguna duda o sugerencia visita nuestro foro.</p>" +
 						"<p><em>Para asuntos de moderación contactar con rangos mayores del staff & (Leaders) o ~ (Administradores)</em></p>" +
 					"</div>" +
